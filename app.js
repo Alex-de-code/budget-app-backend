@@ -6,7 +6,7 @@ const cors = require("cors");
 const app = express();
 
 // import the controller in order to tell the application to use the specific resource's controller
-// const logsController = require("./controllers/logsController.js");
+const transactionsController = require("./controllers/transactionsController.js");
 
 // MIDDLEWARE PACKAGES
 app.use(cors());
@@ -15,7 +15,7 @@ app.use(express.json());
 
 // MIDDLEWARE FOR CONTROLLERS
 // We want to use the logsController routes with this base url
-// app.use("/logs", logsController);
+app.use("/transactions", transactionsController);
 
 // ROUTES
 app.get("/", (req, res) => {
