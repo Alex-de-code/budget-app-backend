@@ -60,7 +60,7 @@ transactions.post("/", validateForm, (req, res) => {
     .json({ transactions: transactionsArray, message: "Success" });
 });
 
-// UPDATE ROUTE
+// UPDATE ROUTE ~~~~~~~~~~~~~~~~~~~~~~~~
 transactions.put("/:id", (req, res) => {
   // accessing id with req.params
   const { id } = req.params;
@@ -80,7 +80,7 @@ transactions.put("/:id", (req, res) => {
   }
 });
 
-// DELETE Route
+// DELETE Route ~~~~~~~~~~~~~~~~~~~~~~~~
 transactions.delete("/:id", (req, res) => {
   // set id variable
   const { id } = req.params;
