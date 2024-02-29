@@ -21,13 +21,13 @@ const transactions = express.Router();
 // we need to return the data from the model using our controller
 let transactionsArray = require("../models/account.model.js");
 
-// SHOW ROUTE
+// SHOW ROUTE ~~~~~~~~~~~~~~~~~~~~~~~~
 // create get route to return json to the client
 transactions.get("/", (req, res) => {
   res.status(200).json({ transations: transactionsArray, message: "Success" });
 });
 
-// INDEX ROUTE
+// INDEX ROUTE ~~~~~~~~~~~~~~~~~~~~~~~~
 // get a single transaction
 transactions.get("/:id", (req, res) => {
   const { id } = req.params;
@@ -44,7 +44,7 @@ transactions.get("/:id", (req, res) => {
   }
 });
 
-// POST ROUTE - create/add a transaction
+// POST ROUTE (create/add a transaction) ~~~~~~~~~~~~~~~~~~~~~~~~
 // grab the information from the form
 transactions.post("/", validateForm, (req, res) => {
   // need to fake create a new id. will take the last id number in the transactions array and add 1
