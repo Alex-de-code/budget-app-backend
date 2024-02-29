@@ -21,11 +21,13 @@ const transactions = express.Router();
 // we need to return the data from the model using our controller
 let transactionsArray = require("../models/account.model.js");
 
+// SHOW ROUTE
 // create get route to return json to the client
 transactions.get("/", (req, res) => {
-  res.json({ transations: transactionsArray });
+  res.status(200).json({ transations: transactionsArray, message: "Success" });
 });
 
+// INDEX ROUTE
 // get a single transaction
 transactions.get("/:id", (req, res) => {
   const { id } = req.params;
@@ -33,8 +35,13 @@ transactions.get("/:id", (req, res) => {
   const transaction = transactionsArray.find(
     (transaction) => transaction.id === +id
   );
-
-  res.json({ transaction });
+  // if transaction id is not found return 404 error
+  if (!transaction) {
+    res.status(404).json({ message: "Transaction not found" });
+  } else {
+    // if id is found return the transaction obj with that id
+    res.status(200).json({ transaction, message: "Success" });
+  }
 });
 
 // POST ROUTE - create/add a transaction
@@ -44,11 +51,33 @@ transactions.post("/", validateForm, (req, res) => {
   const newId = transactionsArray[transactionsArray.length - 1].id + 1;
   // create a new object to put the newId at the front of the key-value pairs
   const newObj = { id: newId, ...req.body };
-
   // push the new object
   transactionsArray.push(newObj);
-  res.json({ transactions: transactionsArray });
-  // create an id
+  res
+    // 200 status
+    .status(200)
+    //update transactions data to new transactionsArray
+    .json({ transactions: transactionsArray, message: "Success" });
+});
+
+// UPDATE ROUTE
+transactions.put("/:id", (req, res) => {
+  // accessing id with req.params
+  const { id } = req.params;
+  // declared a variable and set it equal to the result of a specifc index given in the array
+  const transactionIndex = transactionsArray.findIndex((log) => log.id === +id);
+  //if transaction id isn't found return 404 error message
+  if (transactionIndex === -1) {
+    res.status(404).json({ message: "Transaction not found" });
+  } else {
+    //if id is found update transaction object at the given index to the inputs of the request body
+    transactionsArray[transactionIndex] = req.body;
+    res
+      //success 200
+      .status(200)
+      //reset data to new transactionsArray
+      .json({ transactions: transactionsArray, message: "Success" });
+  }
 });
 
 // DELETE Route
@@ -59,8 +88,14 @@ transactions.delete("/:id", (req, res) => {
   transactionsArray = transactionsArray.filter(
     (transaction) => transaction.id !== +id
   );
-  // reset data to new transactions Array
-  res.json({ transactions: transactionsArray });
+  // reset data to new transactions Array + 200 Status Success message handler
+  res.status(200).json({ transactions: transactionsArray, message: "Success" });
+});
+
+// Error handling middleware -- server 500 error message
+transactions.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: "Internal Server Error" });
 });
 
 // export transactions variable to be used in the app.js file
