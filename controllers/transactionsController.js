@@ -24,7 +24,7 @@ let transactionsArray = require("../models/account.model.js");
 // SHOW ROUTE ~~~~~~~~~~~~~~~~~~~~~~~~
 // create get route to return json to the client
 transactions.get("/", (req, res) => {
-  res.status(200).json({ transations: transactionsArray, message: "Success" });
+  res.status(200).json({ transactions: transactionsArray, message: "Success" });
 });
 
 // INDEX ROUTE ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -40,7 +40,7 @@ transactions.get("/:id", (req, res) => {
     res.status(404).json({ message: "Transaction not found" });
   } else {
     // if id is found return the transaction obj with that id
-    res.status(200).json({ transaction, message: "Success" });
+    res.status(200).json({ transaction: transaction, message: "Success" });
   }
 });
 
