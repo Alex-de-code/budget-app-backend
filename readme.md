@@ -6,7 +6,7 @@ This is the backend application for the Budgeting App. It provides API endpoints
 
 To get started with the backend application, follow these steps:
 
-1. Clone the repository:
+1. Fork and clone the repository:
 
    ```
    git clone <repository-url>
