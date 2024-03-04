@@ -123,7 +123,7 @@ The base URL for accessing the API endpoints is `http://localhost:4321`.
   }
   ```
 
-  - Endpoint:
+- Endpoint:
 
   ```
   http://localhost:4321/transactions/4
