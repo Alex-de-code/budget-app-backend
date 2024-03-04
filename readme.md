@@ -52,6 +52,12 @@ The base URL for accessing the API endpoints is `http://localhost:4321`.
   ]
   ```
 
+- Endpoint:
+
+  ```
+  http://localhost:4321/transactions
+  ```
+
 #### GET /transactions/:id
 
 - Description: Retrieve a single transaction by ID.
@@ -71,6 +77,12 @@ The base URL for accessing the API endpoints is `http://localhost:4321`.
   }
   ```
 
+- Endpoint:
+
+  ```
+  http://localhost:4321/transactions/1
+  ```
+
 #### POST /transactions
 
 - Description: Create a new transaction.
@@ -85,6 +97,12 @@ The base URL for accessing the API endpoints is `http://localhost:4321`.
     "from": "Supermarket",
     "category": "Groceries"
   }
+  ```
+
+- Endpoint:
+
+  ```
+  http://localhost:4321/transactions
   ```
 
 #### PUT /transactions/:id
@@ -105,11 +123,24 @@ The base URL for accessing the API endpoints is `http://localhost:4321`.
   }
   ```
 
+  - Endpoint:
+
+  ```
+  http://localhost:4321/transactions/4
+  ```
+
 #### DELETE /transactions/:id
 
 - Description: Delete a transaction by ID.
 - Parameters:
+
   - `id`: Transaction ID.
+
+- Endpoint:
+
+  ```
+  http://localhost:4321/transactions/1
+  ```
 
 ## Models
 
