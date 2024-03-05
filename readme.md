@@ -2,6 +2,8 @@
 
 This is the backend application for the Budgeting App. It provides API endpoints to manage transactions.
 
+[Link to Website](https://alex-budget-app.netlify.app)
+
 ## Getting Started
 
 To get started with the backend application, follow these steps:
